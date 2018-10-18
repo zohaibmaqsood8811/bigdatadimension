@@ -62,8 +62,17 @@ view: si_quieries {
 
   dimension: query_id {
     type: string
-    sql: ${TABLE}."QUERY_ID" ;;
-  }
+    sql: ${TABLE}.query_id ;;
+      }
+
+ measure: query_count {
+  type:  count_distinct
+  sql: $query_id
+  drill_fields: [database_name, schema_name, user_name, role_name, warehouse_name]
+  ;;
+   }
+
+
 
   dimension: query_tag {
     type: string
