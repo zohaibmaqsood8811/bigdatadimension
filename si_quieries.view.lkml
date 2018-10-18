@@ -67,9 +67,7 @@ view: si_quieries {
 
  measure: query_count {
   type:  count_distinct
-  sql: $query_id
-  drill_fields: [database_name, schema_name, user_name, role_name, warehouse_name]
-  ;;
+  sql: ${TABLE}.query_id ;;
    }
 
 
@@ -119,6 +117,12 @@ view: si_quieries {
     sql: ${TABLE}."SESSION_ID" ;;
   }
 
+
+   measure: No_of_Sessions{
+    type: count_distinct
+    sql: ${TABLE}."SESSION_ID" ;;
+  }
+
   dimension_group: start {
     type: time
     timeframes: [
@@ -137,6 +141,9 @@ view: si_quieries {
     type: number
     sql: ${TABLE}."TOTAL_ELAPSED_TIME" ;;
   }
+
+
+
 
   dimension: transaction_blocked_time {
     type: number
