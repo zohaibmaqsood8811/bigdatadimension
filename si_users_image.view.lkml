@@ -11,6 +11,13 @@ view: si_users_image {
     sql: ${TABLE}."IMAGE_URL" ;;
   }
 
+  dimension: looker_image {
+    type: string
+    sql: ${TABLE}."NAME"
+      html: <img src="https://s3.console.aws.amazon.com/s3/buckets/lookerpoc/User_Images\"${TABLE}.NAME/> ;;
+
+  }
+
   dimension: name {
     type: string
     sql: ${TABLE}."NAME" ;;
