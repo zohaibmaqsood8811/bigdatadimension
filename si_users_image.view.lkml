@@ -14,7 +14,7 @@ view: si_users_image {
   dimension: looker_image {
     type: string
     sql: ${TABLE}."NAME"
-      html: <img src="https://s3.console.aws.amazon.com/s3/buckets/lookerpoc/User_Images\"${TABLE}.NAME/> ;;
+      html: <img src="https://s3.amazonaws.com/lookerpoc/User_Images/${name}/>" ;;
 
   }
 
