@@ -155,6 +155,14 @@ view: si_quieries {
     sql: ${TABLE}."USER_NAME" ;;
   }
 
+
+  dimension: looker_image {
+    type: string
+    sql: ${TABLE}."USER_NAME";;
+    html: <img src="https://s3.amazonaws.com/lookerpoc/User_Images+/{value}/>";;
+  }
+
+
   dimension: warehouse_name {
     type: string
     sql: ${TABLE}."WAREHOUSE_NAME" ;;
