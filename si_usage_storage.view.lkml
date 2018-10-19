@@ -6,14 +6,32 @@ view: si_usage_storage {
     sql: ${TABLE}."FAILSAFE_BYTES" ;;
   }
 
+  measure: MB_Failsafe_Storage {
+    type: sum
+    sql: ${TABLE}."FAILSAFE_BYTES"/1000000 ;;
+  }
+
+
+
   dimension: stage_bytes {
     type: number
     sql: ${TABLE}."STAGE_BYTES" ;;
   }
 
+  measure: MB_Stage_Storage {
+    type: sum
+    sql: ${TABLE}."STAGE_BYTES"/1000000 ;;
+  }
+
+
   dimension: storage_bytes {
     type: number
     sql: ${TABLE}."STORAGE_BYTES" ;;
+  }
+
+  measure: MBStorage {
+    type: sum
+    sql: ${TABLE}."STORAGE_BYTES" /1000000;;
   }
 
   dimension_group: usage {

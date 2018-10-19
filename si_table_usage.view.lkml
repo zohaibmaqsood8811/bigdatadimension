@@ -153,6 +153,13 @@ view: si_table_usage {
     sql: ${TABLE}."TABLE_TYPE" ;;
   }
 
+
+
+  measure: Table_Count {
+    type: count_distinct
+    sql: ${TABLE}."TABLE_ID" ;;
+  }
+
   dimension: user_defined_type_catalog {
     type: string
     sql: ${TABLE}."USER_DEFINED_TYPE_CATALOG" ;;
