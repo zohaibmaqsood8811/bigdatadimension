@@ -159,8 +159,9 @@ view: si_quieries {
   dimension: looker_image {
     type: string
     sql: ${TABLE}."USER_NAME";;
-    html: <img src="https://s3.amazonaws.com/lookerpoc/User_Images+/{{value}}}/>";;
+    html: <img src="https://s3.amazonaws.com/lookerpoc/User_Images+/{{value}}.png" width= 50 height = 50  />;;
   }
+
 
 
   dimension: warehouse_name {
