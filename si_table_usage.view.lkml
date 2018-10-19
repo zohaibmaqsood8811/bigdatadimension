@@ -6,6 +6,11 @@ view: si_table_usage {
     sql: ${TABLE}."BYTES" ;;
   }
 
+  measure: Storage {
+    type: sum
+    sql: ${TABLE}."BYTES" ;;
+  }
+
   dimension: clustering_key {
     type: string
     sql: ${TABLE}."CLUSTERING_KEY" ;;

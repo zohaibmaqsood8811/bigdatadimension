@@ -12,3 +12,4 @@ persist_with: bidatadiemnsion_looker_default_datagroup
 
 explore: si_quieries {}
 explore: si_users_image {}
+explore: si_table_usage {}

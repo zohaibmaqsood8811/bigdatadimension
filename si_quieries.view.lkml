@@ -165,7 +165,7 @@ view: si_quieries {
   dimension: snowinsight_logo {
     type: string
     sql: ${TABLE}."USER_NAME";;
-    html: <img src="https://s3.amazonaws.com/lookerpoc/User_Images%20/snowinsight%20Blue.png?response-content-disposition=inline&X-Amz-Security-Token=FQoGZXIvYXdzEIj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDA9cCT%2FiV5OPak2BaSL6ASvUM%2BP8hRpAELZeuIIb29n37XJ3llI7ASw6xNE5wedcj7FetOA7WIF7sJoOLTtN6JUrcCK14Tt1xtf8vOzIUI7ZuxcxNGTlBJdbJ8N0Qr3oFvEBR%2BnrIVhA%2By4fOgF0RdeMDeTkFEgBgywp45osMy73HvOetDERuL2SSB5MWaZ57XMhbM%2F5Nj%2BwAP34V%2BcpAtIJjERqfvjjTY1Qo12dhhdkLqwRkL1N2rm5Su6PkW5totpR6Cdetv5Th7%2B9JMqPVdPQcAzZK%2BKZ216Eb8xIaiua3u%2BDygGJtcx2IGYK27844TqsQhswcax7%2BDodU1xevksG%2FCMSxRfGTZsoh9On3gU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20181019T143834Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIATVP2FMU2ADNCPYFB%2F20181019%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=622be26afa6b59a8f5e6e242e05406713f812debc01eec950e70c816fc70de6d" width= 200 height = 70  />;;
+    html: <img src="https://s3.amazonaws.com/lookerpoc/bigdata-dimension-logo.png" width= 200 height = 70  />;;
   }
 
 
