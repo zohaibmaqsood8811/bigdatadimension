@@ -11,6 +11,7 @@ view: si_table_usage {
     sql: ${TABLE}."BYTES" ;;
   }
 
+
   dimension: clustering_key {
     type: string
     sql: ${TABLE}."CLUSTERING_KEY" ;;
@@ -98,6 +99,13 @@ view: si_table_usage {
     sql: ${TABLE}."ROW_COUNT" ;;
   }
 
+
+  measure: Rows {
+    type: sum
+    sql: ${TABLE}."ROW_COUNT" ;;
+  }
+
+
   dimension: self_referencing_column_name {
     type: string
     sql: ${TABLE}."SELF_REFERENCING_COLUMN_NAME" ;;
@@ -117,6 +125,8 @@ view: si_table_usage {
     type: number
     sql: ${TABLE}."TABLE_ID" ;;
   }
+
+
 
   dimension: table_name {
     type: string
