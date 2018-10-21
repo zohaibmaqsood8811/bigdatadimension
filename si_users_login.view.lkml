@@ -35,6 +35,14 @@ view: si_users_login {
     sql: ${TABLE}."EVENT_TIMESTAMP" ;;
   }
 
+
+
+  measure: Max_Event{
+    type: date
+       sql:max( ${TABLE}."EVENT_TIMESTAMP") ;;
+  }
+
+
   dimension: event_type {
     type: string
     sql: ${TABLE}."EVENT_TYPE" ;;
