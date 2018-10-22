@@ -6,6 +6,13 @@ view: si_wh_creditsmetering {
     sql: ${TABLE}."CREDITS_USED" ;;
   }
 
+
+  measure: Total_Credit {
+    type: sum
+    sql: ${TABLE}."CREDITS_USED" ;;
+  }
+
+
   dimension_group: end {
     type: time
     timeframes: [
