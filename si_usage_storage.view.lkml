@@ -49,6 +49,36 @@ view: si_usage_storage {
     sql: ${TABLE}."USAGE_DATE" ;;
   }
 
+  parameter:  Region{
+    type: string
+    allowed_value: { value: "AWS-US" }
+    allowed_value: { value: "AWS-ASIA" }
+    allowed_value: { value: "AWS-EU(Frankfurt)" }
+    allowed_value: { value: "AWS-EU (Dublin)"}
+    allowed_value: { value: "AWS-AZURE East(US-2)"}
+        }
+
+
+
+
+  measure: Region_Values {
+    label_from_parameter: Region
+    sql:
+       CASE
+         WHEN {% parameter Region %} = 'AWS-US' THEN  ${MBStorage}*23
+         WHEN {% parameter Region %} = 'AWS-ASIA' THEN ${MBStorage}*25
+         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN  ${MBStorage}*24.50
+         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN   ${MBStorage}*23
+         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   ${MBStorage}*23
+         ELSE
+           NULL
+       END ;;
+  }
+
+
+
+
+
   measure: count {
     type: count
     drill_fields: []
