@@ -58,26 +58,48 @@ view: si_usage_storage {
     allowed_value: { value: "AWS-AZURE East(US-2)"}
         }
 
-measure: Account_Storage {
+measure: Account_Storage_TB {
   type: sum
-  sql: (sum(${TABLE}.MBStorage)+sum(${TABLE}.MB_Failsafe_Storage)+sum(${TABLE}.failsafe_bytes))/1000000;;
-
+  sql: ((${storage_bytes}/1000000)+(failsafe_bytes/1000000)+(${stage_bytes}/1000000))/1000000;;
 }
+
+
+  measure: Account_Storage_MB {
+    type: sum
+    sql: ((${storage_bytes}/1000000)+(failsafe_bytes/1000000)+(${stage_bytes}/1000000));;
+  }
+
 
 
   measure: Region_Values {
     label_from_parameter: Region
     sql:
        CASE
-         WHEN {% parameter Region %} = 'AWS-US' THEN (${TABLE}.Account_Storage)*23
-         WHEN {% parameter Region %} = 'AWS-ASIA' THEN (${TABLE}.Account_Storage)*25
-         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN  (${TABLE}.Account_Storage)*24.50
-         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN   (${TABLE}.Account_Storage)*23
-         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   (${TABLE}.Account_Storage)*23
+         WHEN {% parameter Region %} = 'AWS-US' THEN (${Account_Storage_TB})*23
+         WHEN {% parameter Region %} = 'AWS-ASIA' THEN (${Account_Storage_TB})*25
+         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN  (${Account_Storage_TB})*24.50
+         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN   (${Account_Storage_TB})*23
+         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   (${Account_Storage_TB})*23
          ELSE
            NULL
        END ;;
   }
+
+
+  dimension: Region_Price {
+    label_from_parameter: Region
+    sql:
+       CASE
+         WHEN {% parameter Region %} = 'AWS-US' THEN '23 per Terabyte per month for customer deployed in AWS-US'
+         WHEN {% parameter Region %} = 'AWS-ASIA' THEN '25 per Terabyte per month for customer deployed in AWS-ASIA'
+         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN '24.50 per Terabyte per month for customer deployed in AWS-EU(Frankfurt)'
+         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN  '23 per Terabyte per month for customer deployed in AWS-EU (Dublin)'
+         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   '23 per Terabyte per month for customer deployed in AWS-AZURE East(US-2)'
+         ELSE
+           NULL
+       END ;;
+  }
+
 
 
 
