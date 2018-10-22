@@ -58,18 +58,22 @@ view: si_usage_storage {
     allowed_value: { value: "AWS-AZURE East(US-2)"}
         }
 
+measure: Account_Storage {
+  type: sum
+  sql: (sum(${TABLE}.MBStorage)+sum(${TABLE}.MB_Failsafe_Storage)+sum(${TABLE}.failsafe_bytes))/1000000;;
 
+}
 
 
   measure: Region_Values {
     label_from_parameter: Region
     sql:
        CASE
-         WHEN {% parameter Region %} = 'AWS-US' THEN  ${MBStorage}*23
-         WHEN {% parameter Region %} = 'AWS-ASIA' THEN ${MBStorage}*25
-         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN  ${MBStorage}*24.50
-         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN   ${MBStorage}*23
-         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   ${MBStorage}*23
+         WHEN {% parameter Region %} = 'AWS-US' THEN (${TABLE}.Account_Storage)*23
+         WHEN {% parameter Region %} = 'AWS-ASIA' THEN (${TABLE}.Account_Storage)*25
+         WHEN {% parameter Region %} = 'AWS-EU(Frankfurt)' THEN  (${TABLE}.Account_Storage)*24.50
+         WHEN {% parameter Region %} = 'AWS-EU (Dublin)' THEN   (${TABLE}.Account_Storage)*23
+         WHEN {% parameter Region %} = 'AWS-AZURE East(US-2)' THEN   (${TABLE}.Account_Storage)*23
          ELSE
            NULL
        END ;;
