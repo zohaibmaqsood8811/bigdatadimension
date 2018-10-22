@@ -165,7 +165,7 @@ view: si_quieries {
   dimension: snowinsight_logo {
     type: string
     sql: ${TABLE}."USER_NAME";;
-    html: <img src="https://s3.amazonaws.com/lookerpoc/bigdata-dimension-logo.png" width= 200 height = 70  />;;
+    html: <img src="https://s3.amazonaws.com/lookerpoc/logo-blue.png" width= 150 height = 70  />;;
   }
 
 
