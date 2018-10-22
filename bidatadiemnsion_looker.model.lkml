@@ -15,3 +15,4 @@ explore: si_users_image {}
 explore: si_table_usage {}
 explore: si_usage_storage {}
 explore: si_users_login {}
+explore: si_wh_creditsmetering {}
