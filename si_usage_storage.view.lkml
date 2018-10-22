@@ -103,8 +103,6 @@ measure: Account_Storage_TB {
 
 
 
-
-
   measure: count {
     type: count
     drill_fields: []
